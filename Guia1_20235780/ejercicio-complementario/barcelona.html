@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Barcelona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px',
+                },
+                extend: {
+                    colors: {
+                        wine: '#a50044',
+                        blue: '#004d98',
+                        darkYellow: '#edbb00',
+                        red: '#db0030',
+                    },
+                    fontFamily: {
+                        sans: ['Bai Jamjuree', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-sans text-darkYellow">
+    <!-- Header -->
+    <header class="bg-wine text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl md:text-4xl font-bold">FC Barcelona</h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#acerca-de" class="hover:text-darkYellow">Nosotros</a>
+                <a href="#jugadores" class="hover:text-darkYellow">Jugadores</a>
+                <a href="#partidos" class="hover:text-darkYellow">Encuentros</a>
+                <a href="#contacto" class="hover:text-darkYellow">Contactanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="acerca-de" class="bg-red py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Acerca del FC Barcelona</h2>
+            <p class="text-lg md:text-xl text-white m-5">
+                El Fútbol Club Barcelona, conocido como Barça, es uno de los clubes de fútbol más prestigiosos y
+                exitosos del mundo. Fundado el 29 de noviembre de 1899 en Barcelona, España, el club es conocido por su
+                lema "Més que un club" ("Más que un club"), que refleja su importancia cultural, social y política en
+                Cataluña y más allá.</p>
+        </div>
+    </section>
+
+    <!-- Players Section -->
+    <section id="jugadores" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Jugadores Estrella</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <img src="../images/lamine.png" alt="" class="w-full object-cover rounded-t-lg">
+                    <h3 class="mt-4 text-xl font-bold">Lamine Yamal</h3>
+                    <p>Posición: Delantero</p>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <img src="../images/casado.png" alt="" class="w-full h-50 object-cover rounded-t-lg">
+                    <h3 class="mt-4 text-xl font-bold">Casadó</h3>
+                    <p>Posición: Medicampista</p>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <img src="../images/cubarsi.png" alt="" class="w-full object-cover rounded-t-lg">
+                    <h3 class="mt-4 text-xl font-bold">Pau Cubarsí</h3>
+                    <p>Posición: Defensor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matches Section -->
+    <section id="partidos" class="bg-blue text-white py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Próximos Encuentros</h2>
+            <ul class="space-y-4">
+                <li>FC Barcelona vs. Real Madrid - Ene 28, 2025</li>
+                <li>FC Barcelona vs. Atletico Madrid - Feb 14, 2025</li>
+                <li>FC Barcelona vs. Sevilla FC - Mar 8, 2025</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Contactanos</h2>
+            <form class="max-w-lg mx-auto space-y-4">
+                <input type="text" placeholder="Nombre" class="w-full p-2 border rounded-lg">
+                <input type="email" placeholder="Email" class="w-full p-2 border rounded-lg">
+                <textarea placeholder="Mensaje" class="w-full p-2 border rounded-lg"></textarea>
+                <button type="submit" class="bg-wine text-white px-4 py-2 rounded-lg hover:bg-blue">Enviar
+                    Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-darkYellow text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 FC Barcelona. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

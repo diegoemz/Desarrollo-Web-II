@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px',
+                },
+                extend: {
+                    colors: {
+                        strongGreen: 'hsl(131, 66%, 44%)', // Fuerte verde
+                        lightGreen: 'hsl(120, 100%, 69%)', // Verde claro
+                        darkGrayishGreen: 'hsl(120, 10%, 33%)', // Verde gris oscuro
+                        grayishGreen: 'hsl(120, 11%, 66%)', // Verde gris claro
+                    },
+                    fontFamily: {
+                        sans: ['Bai Jamjuree', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-image: url('Guia1_20235780/images/bg-header-desktop.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Section Hero-->
+    <section id="Hero">
+        <div class="max-w-6xl mx-auto text-center px-10 mb-10 pt-16">
+            <h3 class="mb-8 text-4xl font-bold text-darkGrayishGreen md:text-5xl">Portafolio - Desarrollo Web II</h3>
+            <p class="max-w-6xl mx-auto leading-9 text-center text-grayishGreen mb-10 text-xl md:text-2xl">
+                En este sitio web encontraras las guías de la materia de Desarrollo Web II, donde podrás visualizar
+                diferentes ejercicios prácticos utilizados para conocer acerca del mundo del desarrollo web.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <figure class="w-1/2 md:w-1/3 h-60">
+                    <img src="Guia1_20235780/images/desarrollo-3.png" alt="Desarrollo web - Imagen 2"
+                        class="w-full h-full object-cover rounded-lg shadow-md" />
+                </figure>
+                <figure class="w-1/2 md:w-1/3 h-60">
+                    <img src="Guia1_20235780/images/desarrollo.jpg" alt="Desarrollo web - Imagen 1"
+                        class="w-full h-full object-cover rounded-lg shadow-md" />
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Guías -->
+    <section id="Guias">
+        <div class="max-w-6xl mx-auto text-center px-4 mb-30 md:px-10">
+            <h3 class="mb-8 text-4xl font-bold text-grayishGreen md:text-5xl">Guías</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="bg-white p-6 mb-20 rounded-lg shadow-md w-full max-w-4xl">
+                    <h4 class="text-2xl font-semibold mb-4 text-darkGrayishGreen">Guía 1: Ejercicios</h4>
+                    <ul class="space-y-3 text-center">
+                        <li>
+                            <a href="Guia1_20235780/clipboard/index.html" class="text-grayishGreen hover:underline">
+                                Ejercicio 1: Clipboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Guia1_20235780/galeria/galeria.html" class="text-grayishGreen hover:underline">
+                                Ejercicio 2: Galería
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Guia1_20235780/login/login.html" class="text-grayishGreen hover:underline">
+                                Ejercicio 3: Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Guia1_20235780/pricing-card/pricing.html" class="text-grayishGreen hover:underline">
+                                Ejercicio 4: Pricing Cards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Guia1_20235780/producto/producto.html" class="text-grayishGreen hover:underline">
+                                Ejercicio 5: Producto
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Guia1_20235780/" class="text-grayishGreen hover:underline">
+                                Ejercicio 6: Tema de Interes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

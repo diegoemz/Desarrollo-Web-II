@@ -29,7 +29,7 @@ export function Search({ query, setQuery }) {
     )
 }
 
-export function NumResult({ movies }) {
+export function NumResults({ movies }) {
     return (
         <p className="num-results">
             <strong>{movies.length}</strong> resultados encontrados

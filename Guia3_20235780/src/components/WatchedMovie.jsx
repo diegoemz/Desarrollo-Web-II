@@ -1,31 +1,23 @@
-import React from 'react'
-
-export const WatchedMovieContainer = ({ children }) => {
-  return (
-    <>
-      {children}
-    </>
-  )
+export function WatchedMoviesContainer({ children }) {
+  return <>{children}</>;
 }
-
-export function WatchedMovieList({ watched }) {
+export function WatchedMoviesList({ watched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
         <WatchedMovie movie={movie} key={movie.imdbID} />
       ))}
     </ul>
-  )
+  );
 }
-
 export function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
-          <span>⭐️</span>
+          <span>⭐</span>
           <span>{movie.imdbRating}</span>
         </p>
         <p>
@@ -36,42 +28,43 @@ export function WatchedMovie({ movie }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
+        <button className="btn-delete">X</button>
       </div>
     </li>
-  )
+  );
 }
-
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
-
+/**
+* Calcula el promedio de un arreglo de números.
+* @param {number[]} arr - Arreglo de valores numéricos.
+* @returns {number} Promedio de los valores.
+*/
+const calculateAverage = (arr) =>
+  arr.length ? arr.reduce((acc, cur) => acc + cur, 0) / arr.length : 0;
 export function WatchedSummary({ watched }) {
-  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
-  const avgUserRating = average(watched.map((movie) => movie.userRating));
-  const avgRuntime = average(watched.map((movie) => movie.runtime));
-
-
+  const avgImdbRating = calculateAverage(watched.map((movie) => movie.imdbRating));
+  const avgUserRating = calculateAverage(watched.map((movie) => movie.userRating));
+  const avgRuntime = calculateAverage(watched.map((movie) => movie.runtime));
   return (
     <div className="summary">
-      <h2>Movies you watched</h2>
+      <h2>Películas que has visto</h2>
       <div>
         <p>
           <span>#️⃣</span>
-          <span>{watched.length} movies</span>
+          <span>{watched.length} películas</span>
         </p>
         <p>
-          <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>⭐</span>
+          <span>{avgImdbRating.toFixed(2)}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{avgUserRating}</span>
+          <span>{avgUserRating.toFixed(2)}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
       </div>
     </div>
-  )
+  );
 }
-

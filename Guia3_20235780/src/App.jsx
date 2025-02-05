@@ -1,81 +1,71 @@
 import { useState } from "react";
-import { Logo, Nav, NumResult, Search } from "./components/Nav";
+import { Logo, Nav, NumResults, Search } from "./components/Nav";
 import { Box } from "./components/Box";
 import { MovieList } from "./components/Movie";
-import { WatchedMovieContainer, WatchedMovieList, WatchedSummary } from "./components/WatchedMovie";
-import { useFetchMovie } from "./hooks/useFetchMovie";
-
-const tempMovieData = [
-  {
-    imdbID: "tt1375666",
-    Title: "Inception",
-    Year: "2010",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-  },
-  {
-    imdbID: "tt0133093",
-    Title: "The Matrix",
-    Year: "1999",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
-  },
-  {
-    imdbID: "tt6751668",
-    Title: "Parasite",
-    Year: "2019",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
-  },
-];
-
-const tempWatchedData = [
-  {
-    imdbID: "tt1375666",
-    Title: "Inception",
-    Year: "2010",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-    runtime: 148,
-    imdbRating: 8.8,
-    userRating: 10,
-  },
-  {
-    imdbID: "tt0088763",
-    Title: "Back to the Future",
-    Year: "1985",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    runtime: 116,
-    imdbRating: 8.5,
-    userRating: 9,
-  },
-];
-
+import { WatchedMoviesContainer, WatchedMoviesList, WatchedSummary } from "./components/WatchedMovie";
+import { useFetchMovies } from "./hooks/useFetchMovies";
+import { MovieDetails } from "./components/MovieDetails";
+/**
+* Componente principal de la aplicación.
+*/
 export default function App() {
+  // Estado para la búsqueda de películas
   const [query, setQuery] = useState("");
-  const [watched, setWatched] = useState(tempWatchedData);
-
-  const movies = useFetchMovie(query);
-
+  // Obtiene películas basadas en la consulta
+  const { movies, isLoading, error } = useFetchMovies(query);
+  // Estado de películas vistas
+  const [watched, setWatched] = useState([]);
+  // Estado para la película seleccionada
+  const [selectedId, setSelectedId] = useState(null);
+  /**
+  * Maneja la selección de una película.
+  * @param {string} id - ID de la película seleccionada.
+  */
+  function handleSelectMovie(id) {
+    setSelectedId(id);
+  }
+  /**
+  * Cierra los detalles de la película.
+  */
+  function handleCloseMovie() {
+    setSelectedId(null);
+  }
+  /**
+  * Agrega una película a la lista de vistas.
+  * @param {Object} movie - Película a agregar.
+  */
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
   return (
     <>
       <Nav>
         <Logo />
         <Search query={query} setQuery={setQuery} />
-        <NumResult movies={movies} />
+        <NumResults movies={movies} />
       </Nav>
-
       <main className="main">
         <Box>
-          <MovieList movies={movies} />
+          {isLoading && <p className="loader">Cargando...</p>}
+          {error && <p className="error">⛔ {error}</p>}
+          <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
         </Box>
-
         <Box>
-          <WatchedMovieContainer>
-            <WatchedSummary watched={watched} />
-            <WatchedMovieList watched={watched} />
-          </WatchedMovieContainer>
+          <WatchedMoviesContainer>
+            {selectedId ? (
+              <MovieDetails
+                selectedId={selectedId}
+                onCloseMovie={handleCloseMovie}
+                onAddWatched={handleAddWatched}
+                watched={watched}
+              />
+            ) : (
+              <>
+                <WatchedSummary watched={watched} />
+                <WatchedMoviesList watched={watched} />
+              </>
+            )}
+          </WatchedMoviesContainer>
         </Box>
       </main>
     </>

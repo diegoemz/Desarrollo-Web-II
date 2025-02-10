@@ -1,16 +1,16 @@
 export function WatchedMoviesContainer({ children }) {
   return <>{children}</>;
 }
-export function WatchedMoviesList({ watched }) {
+export function WatchedMoviesList({ watched, removeWatchedMovies }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} key={movie.imdbID} />
+        <WatchedMovie movie={movie} key={movie.imdbID} removeWatchedMovies={removeWatchedMovies}/>
       ))}
     </ul>
   );
 }
-export function WatchedMovie({ movie }) {
+export function WatchedMovie({ movie, removeWatchedMovies }) {
   return (
     <li>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -28,7 +28,7 @@ export function WatchedMovie({ movie }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
-        <button className="btn-delete">X</button>
+        <button className="btn-delete" onClick={()=>removeWatchedMovies(movie.imdbID)}>X</button>
       </div>
     </li>
   );

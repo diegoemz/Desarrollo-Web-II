@@ -5,13 +5,14 @@ const initialBudget=()=>{
 
 const localStorageExpenses=()=>{
     const localStorageExpenses=localStorage.getItem('expenses')
-    return localStorageExpenses? JSON.parse(localStorageExpenses):[]
+    console.log(localStorageExpenses)
+    return localStorageExpenses === undefined ? JSON.parse(localStorageExpenses):[]
 }
 
 export const initialState = {
     budget: initialBudget(),
     modal: false,
-    expenses: localStorageExpenses,
+    expenses: localStorageExpenses(),
     editingId: "",
     currentCategory: ""
 }

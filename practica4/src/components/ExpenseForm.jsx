@@ -47,6 +47,16 @@ export const ExpenseForm = () => {
             return;
         }
 
+        const totalExpenses = state.expenses.reduce((sum, exp) => sum + exp.amount, 0);
+        const newTotal = state.editingId 
+            ? totalExpenses - state.expenses.find(exp => exp.id === state.editingId)?.amount + expense.amount
+            : totalExpenses + expense.amount;
+    
+        if (newTotal > state.budget) {
+            setError('El total de los gastos excede el presupuesto disponible.');
+            return;
+        }
+
         if (state.editingId) {
             dispatch({ type: 'update-expense', payload: { expense: { id: state.editingId, ...expense } } });
         } else {
@@ -59,6 +69,7 @@ export const ExpenseForm = () => {
             category: "",
             date: new Date(),
         });
+        setError('');
     };
 
     return (
